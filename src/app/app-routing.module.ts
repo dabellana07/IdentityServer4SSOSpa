@@ -3,16 +3,20 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AuthGuardService as AuthGuard } from './auth-guard.service';
+import { SignInRedirectCallbackComponent } from './signin-redirect-callback.component';
+import { SignoutRedirectCallbackComponent } from './signout-redirect-callback.component';
+import { AuthGuardService } from './auth-guard.service';
 
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { 
-    path: 'home', 
+  {
+    path: 'home',
     component: HomeComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuardService]
   },
+  { path: 'signin-callback', component: SignInRedirectCallbackComponent },
+  { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
