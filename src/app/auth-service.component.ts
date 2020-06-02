@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { UserManager, User } from 'oidc-client';
+import { UserManager, User, WebStorageStateStore } from 'oidc-client';
 import { Constants } from './constants';
 import { Subject } from 'rxjs';
 
@@ -20,7 +20,8 @@ export class AuthService {
             response_type: 'code',
             post_logout_redirect_uri: `${Constants.clientRoot}signout-callback`,
             silent_redirect_uri: `${Constants.clientRoot}silent-renew-callback`,
-            automaticSilentRenew: true
+            automaticSilentRenew: true,
+            userStore: new WebStorageStateStore({ store: localStorage})
         };
         this._userManager = new UserManager(stsSettings);
         this._userManager.events.addUserSignedOut(() => {
