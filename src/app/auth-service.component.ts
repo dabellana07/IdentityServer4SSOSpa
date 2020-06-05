@@ -17,7 +17,7 @@ export class AuthService {
             client_id: Constants.clientId,
             redirect_uri: `${Constants.clientRoot}signin-callback`,
             scope: 'openid profile api1',
-            response_type: 'code',
+            response_type: 'id_token token',
             post_logout_redirect_uri: `${Constants.clientRoot}signout-callback`,
             silent_redirect_uri: `${Constants.clientRoot}silent-renew-callback`,
             automaticSilentRenew: true,

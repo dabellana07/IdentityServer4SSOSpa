@@ -20,6 +20,7 @@ const routes: Routes = [
   { path: 'signout-callback', component: SignoutRedirectCallbackComponent },
   { path: 'silent-renew-callback', component: SilentRenewCallbackComponent },
   { path: '', redirectTo: 'home', pathMatch: 'full' },
+  // { path: '', component: AppComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
